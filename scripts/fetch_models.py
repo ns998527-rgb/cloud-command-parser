@@ -35,11 +35,11 @@ def main():
             path = os.path.join(d, name)
             if os.path.exists(path) and sha256(path) == digest:
                 continue
-            
+
             repos = [a.repo]
             if a.fallback_repo and a.fallback_repo != a.repo:
                 repos.append(a.fallback_repo)
-                
+
             downloaded = False
             for repo in repos:
                 url = f"https://github.com/{repo}/releases/download/model-{v}/{name}"
