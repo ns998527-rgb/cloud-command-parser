@@ -1,0 +1,53 @@
+[03:38:04] phase 1: wait for the idle HPA to scale down to 1 replica
+[03:38:08] parser Deployment/parser cpu: 1%/70% 1 2 2 32m | spec replicas: 2 ready: 2
+[03:38:25] parser Deployment/parser cpu: 3%/70% 1 2 2 32m | spec replicas: 2 ready: 2
+[03:38:41] parser Deployment/parser cpu: 3%/70% 1 2 2 32m | spec replicas: 2 ready: 2
+[03:38:56] parser Deployment/parser cpu: 3%/70% 1 2 2 33m | spec replicas: 2 ready: 2
+[03:39:12] parser Deployment/parser cpu: 2%/70% 1 2 2 33m | spec replicas: 2 ready: 2
+[03:39:28] parser Deployment/parser cpu: 1%/70% 1 2 2 33m | spec replicas: 2 ready: 2
+[03:39:45] parser Deployment/parser cpu: 1%/70% 1 2 2 33m | spec replicas: 2 ready: 2
+[03:40:01] parser Deployment/parser cpu: 1%/70% 1 2 2 34m | spec replicas: 2 ready: 2
+[03:40:17] parser Deployment/parser cpu: 1%/70% 1 2 2 34m | spec replicas: 2 ready: 2
+[03:40:33] parser Deployment/parser cpu: 1%/70% 1 2 2 34m | spec replicas: 2 ready: 2
+[03:40:49] parser Deployment/parser cpu: 2%/70% 1 2 2 34m | spec replicas: 2 ready: 2
+[03:41:04] parser Deployment/parser cpu: 1%/70% 1 2 2 35m | spec replicas: 2 ready: 2
+[03:41:20] parser Deployment/parser cpu: 1%/70% 1 2 2 35m | spec replicas: 2 ready: 2
+[03:41:36] parser Deployment/parser cpu: 1%/70% 1 2 2 35m | spec replicas: 2 ready: 2
+[03:41:52] parser Deployment/parser cpu: 1%/70% 1 2 2 35m | spec replicas: 2 ready: 2
+[03:42:08] parser Deployment/parser cpu: 1%/70% 1 2 2 36m | spec replicas: 2 ready: 2
+[03:42:24] parser Deployment/parser cpu: 1%/70% 1 2 2 36m | spec replicas: 1 ready: 1
+[03:42:24] phase 2: start load (4 users, 4 minutes) and sample every 15 s
+[03:42:27] parser Deployment/parser cpu: 1%/70% 1 2 2 36m | spec replicas: 1 ready: 1
+[03:42:44] parser Deployment/parser cpu: 2%/70% 1 2 1 36m | spec replicas: 1 ready: 1
+[03:43:32] parser Deployment/parser cpu: 2%/70% 1 2 1 37m | spec replicas: 2 ready: 1
+[03:43:53] parser Deployment/parser cpu: <unknown>/70% 1 2 2 37m | spec replicas: 2 ready: 1
+[03:44:12] parser Deployment/parser cpu: 233%/70% 1 2 2 38m | spec replicas: 2 ready: 1
+[03:45:34] parser Deployment/parser cpu: 233%/70% 1 2 2 39m | spec replicas: 2 ready: 
+[03:46:37] Unable to connect to the server: net/http: TLS handshake timeout | spec replicas:  ready: 1
+[03:47:09] parser Deployment/parser cpu: <unknown>/70% 1 2 2 41m | spec replicas: 2 ready: 1
+[03:47:28] parser Deployment/parser cpu: 223%/70% 1 2 2 41m | spec replicas: 2 ready: 1
+[03:47:54] parser Deployment/parser cpu: 303%/70% 1 2 2 42m | spec replicas: 2 ready: 1
+[03:48:10] parser Deployment/parser cpu: 325%/70% 1 2 2 42m | spec replicas: 2 ready: 1
+[03:48:26] parser Deployment/parser cpu: 196%/70% 1 2 2 42m | spec replicas: 2 ready: 1
+[03:48:42] parser Deployment/parser cpu: 1%/70% 1 2 2 42m | spec replicas: 2 ready: 1
+[03:48:57] parser Deployment/parser cpu: 1%/70% 1 2 2 43m | spec replicas: 2 ready: 1
+[03:49:13] parser Deployment/parser cpu: 1%/70% 1 2 2 43m | spec replicas: 2 ready: 1
+[03:49:28] parser Deployment/parser cpu: 1%/70% 1 2 2 43m | spec replicas: 2 ready: 1
+[03:49:44] parser Deployment/parser cpu: 1%/70% 1 2 2 43m | spec replicas: 2 ready: 1
+[03:49:59] phase 3: load stopped, wait for scale back down to 1 (HPA stabilisation window is 5 minutes)
+[03:50:00] parser Deployment/parser cpu: 1%/70% 1 2 2 44m | spec replicas: 2 ready: 1
+[03:50:16] parser Deployment/parser cpu: 1%/70% 1 2 2 44m | spec replicas: 2 ready: 1
+[03:50:32] parser Deployment/parser cpu: 2%/70% 1 2 2 44m | spec replicas: 2 ready: 1
+[03:50:48] parser Deployment/parser cpu: 1%/70% 1 2 2 44m | spec replicas: 2 ready: 1
+[03:51:04] parser Deployment/parser cpu: 1%/70% 1 2 2 45m | spec replicas: 2 ready: 1
+[03:51:20] parser Deployment/parser cpu: 1%/70% 1 2 2 45m | spec replicas: 2 ready: 1
+[03:51:36] parser Deployment/parser cpu: 1%/70% 1 2 2 45m | spec replicas: 2 ready: 1
+[03:51:51] parser Deployment/parser cpu: 1%/70% 1 2 2 45m | spec replicas: 2 ready: 1
+[03:52:07] parser Deployment/parser cpu: 1%/70% 1 2 2 46m | spec replicas: 2 ready: 1
+[03:52:23] parser Deployment/parser cpu: 1%/70% 1 2 2 46m | spec replicas: 2 ready: 1
+[03:52:39] parser Deployment/parser cpu: 1%/70% 1 2 2 46m | spec replicas: 2 ready: 1
+[03:52:55] parser Deployment/parser cpu: 1%/70% 1 2 2 47m | spec replicas: 2 ready: 1
+[03:53:10] parser Deployment/parser cpu: 1%/70% 1 2 2 47m | spec replicas: 2 ready: 1
+[03:53:26] parser Deployment/parser cpu: 1%/70% 1 2 2 47m | spec replicas: 2 ready: 1
+[03:53:42] parser Deployment/parser cpu: 1%/70% 1 2 2 47m | spec replicas: 1 ready: 1
+[03:53:42] done

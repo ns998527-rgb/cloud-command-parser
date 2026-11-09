@@ -1,0 +1,52 @@
+[04:51:17] === run 1: delete all parser pods
+[04:51:21] ready pods: 1  ready endpoints: [10.42.0.51 10.42.0.53]
+[04:51:27] ready pods: 0  ready endpoints: [10.42.0.51 10.42.0.53]
+[04:51:32] ready pods: 0  ready endpoints: [10.42.0.51 10.42.0.53 10.42.0.55 10.42.0.54]
+[04:51:39] ready pods: 0  ready endpoints: [10.42.0.51 10.42.0.53 10.42.0.55 10.42.0.54]
+[04:51:44] ready pods: 0  ready endpoints: [10.42.0.51 10.42.0.53 10.42.0.55 10.42.0.54]
+[04:51:58] ready pods: 0  ready endpoints: [10.42.0.51 10.42.0.53 10.42.0.55 10.42.0.54]
+[04:52:09] ready pods: 0  ready endpoints: [10.42.0.51 10.42.0.53 10.42.0.55 10.42.0.54]
+[04:52:27] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:52:34] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:52:52] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:13] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:16] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:21] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:25] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:29] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:34] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:38] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:42] ready pods: 2  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:44] run 1 pod parser-5c785fb79c-nn2tc created 2026-11-08T23:21:19Z ready 2026-11-08T23:23:39Z  => 140s
+[04:53:47] run 1 pod parser-5c785fb79c-vc8xr created 2026-11-08T23:21:19Z ready 2026-11-08T23:23:38Z  => 139s
+[04:53:47] === run 2: delete all parser pods
+[04:53:49] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54]
+[04:53:55] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54 10.42.0.57 10.42.0.56]
+[04:54:00] ready pods: 0  ready endpoints: [10.42.0.55 10.42.0.54 10.42.0.57 10.42.0.56]
+[04:54:05] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:10] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:14] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:18] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:22] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:28] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:35] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:39] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:43] ready pods: 2  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:43] run 2 pod parser-5c785fb79c-4wldt created 2026-11-08T23:23:48Z ready 2026-11-08T23:24:41Z  => 53s
+[04:54:45] run 2 pod parser-5c785fb79c-gl9bf created 2026-11-08T23:23:48Z ready 2026-11-08T23:24:41Z  => 53s
+[04:54:45] === run 3: delete all parser pods
+[04:54:46] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:54] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56]
+[04:54:58] ready pods: 0  ready endpoints: [10.42.0.57 10.42.0.56 10.42.0.59 10.42.0.58]
+[04:55:03] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:07] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:11] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:15] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:20] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:25] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:30] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:34] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:38] ready pods: 0  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:42] ready pods: 2  ready endpoints: [10.42.0.59 10.42.0.58]
+[04:55:45] run 3 pod parser-5c785fb79c-cbwcv created 2026-11-08T23:24:45Z ready 2026-11-08T23:25:39Z  => 54s
+[04:55:46] run 3 pod parser-5c785fb79c-szsc6 created 2026-11-08T23:24:45Z ready 2026-11-08T23:25:39Z  => 54s

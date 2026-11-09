@@ -1,0 +1,2 @@
+shard 0/2: 5 commands, 0 already done
+shard 0 finished: 5 records -> s3://datasets/teacher-incluster/shard-0.jsonl

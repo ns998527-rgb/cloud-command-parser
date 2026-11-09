@@ -1,0 +1,6 @@
+NAME                          READY   STATUS      RESTARTS   AGE     IP           NODE                     NOMINATED NODE   READINESS GATES
+pod/teacher-workers-0-psgrd   0/1     Completed   0          4m16s   10.42.0.17   k3d-cloud-command-parser-server-0   <none>           <none>
+pod/teacher-workers-1-6wflp   0/1     Completed   0          4m16s   10.42.0.18   k3d-cloud-command-parser-server-0   <none>           <none>
+
+NAME                        STATUS     COMPLETIONS   DURATION   AGE     CONTAINERS   IMAGES               SELECTOR
+job.batch/teacher-workers   Complete   2/2           3m52s      4m16s   worker       teacher-worker:1.0   batch.kubernetes.io/controller-uid=60b3876e-fd10-414a-896c-7f174967e4ed

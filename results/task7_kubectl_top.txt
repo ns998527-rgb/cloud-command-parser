@@ -1,0 +1,12 @@
+--- t=30s 05:14:19
+NAME                      CPU(cores)   MEMORY(bytes)   
+parser-5c785fb79c-5qq74   338m         594Mi           
+parser-5c785fb79c-ghxj6   162m         571Mi           
+--- t=60s 05:14:50
+NAME                      CPU(cores)   MEMORY(bytes)   
+parser-5c785fb79c-5qq74   997m         537Mi           
+parser-5c785fb79c-ghxj6   974m         549Mi           
+--- t=90s 05:15:21
+NAME                      CPU(cores)   MEMORY(bytes)   
+parser-5c785fb79c-5qq74   891m         526Mi           
+parser-5c785fb79c-ghxj6   898m         538Mi           

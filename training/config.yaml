@@ -1,0 +1,17 @@
+# Training configuration for the sequence-level distillation run (Task 2).
+# `make train` reads only this file. Command-line overrides exist for the second model version.
+seed: 42
+learning_rate: 0.0001
+batch_size: 16
+epochs: 5
+max_seq_len: 128            # tokens; longer examples are truncated
+base_model: EleutherAI/pythia-70m
+train_file: datasets/v1/train.jsonl
+train_examples: 1500        # first N records of train.jsonl (by id order)
+warmup_ratio: 0.05
+weight_decay: 0.0
+library_versions:
+  torch: 2.4.1
+  transformers: 4.46.3
+  pyyaml: 6.0.2
+  numpy: 1.26.4

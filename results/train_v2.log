@@ -1,0 +1,17 @@
+﻿python.exe : D:\sms\.venv-train\lib\site-packages\transformers\utils\hub.py:128: FutureWarning: Using 
+`TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+At D:\sms\cloud_assignment\scripts\_run_training.ps1:4 char:1
++ & $py training/train.py --version v2 --seed 7 --epochs 6 2>&1 | Out-F ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\sms\.venv-tr..._HOME` instead.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(
+training on 1500 examples, 6 epochs, lr 0.0001, seed 7
+epoch 1/6 loss 0.41711 (1352s)
+epoch 2/6 loss 0.14513 (2933s)
+epoch 3/6 loss 0.080912 (3829s)
+epoch 4/6 loss 0.052357 (4819s)
+epoch 5/6 loss 0.03014 (5912s)
+epoch 6/6 loss 0.015441 (6944s)
+saved models/v2: ['config.json', 'generation_config.json', 'model.safetensors', 'special_tokens_map.json', 'tokenizer.json', 'tokenizer_config.json', 'version_info.json']

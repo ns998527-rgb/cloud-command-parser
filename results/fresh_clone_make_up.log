@@ -1,0 +1,208 @@
+bash scripts/up.sh
+== 1/6 cluster
+[36mINFO[0m[0001] Using config file cluster/k3d.yaml (k3d.io/v1alpha5#simple) 
+[36mINFO[0m[0002] portmapping '8080:80' targets the loadbalancer: defaulting to [servers:*:proxy agents:*:proxy] 
+[36mINFO[0m[0002] Prep: Network                                
+[36mINFO[0m[0003] Created network 'k3d-cloud-command-parser'              
+[36mINFO[0m[0003] Created image volume k3d-cloud-command-parser-images    
+[36mINFO[0m[0003] Starting new tools node...                   
+[36mINFO[0m[0004] Starting node 'k3d-cloud-command-parser-tools'          
+[36mINFO[0m[0004] Creating node 'k3d-cloud-command-parser-server-0'       
+[36mINFO[0m[0004] Creating LoadBalancer 'k3d-cloud-command-parser-serverlb' 
+[36mINFO[0m[0005] Using the k3d-tools node to gather environment information 
+[36mINFO[0m[0006] HostIP: using network gateway 172.18.0.1 address 
+[36mINFO[0m[0006] Starting cluster 'cloud-command-parser'                 
+[36mINFO[0m[0006] Starting servers...                          
+[36mINFO[0m[0006] Starting node 'k3d-cloud-command-parser-server-0'       
+[36mINFO[0m[0017] All agents already running.                  
+[36mINFO[0m[0017] Starting helpers...                          
+[36mINFO[0m[0017] Starting node 'k3d-cloud-command-parser-serverlb'       
+[36mINFO[0m[0028] Injecting records for hostAliases (incl. host.k3d.internal) and for 2 network members into CoreDNS configmap... 
+[36mINFO[0m[0030] Cluster 'cloud-command-parser' created successfully!    
+[36mINFO[0m[0030] You can now use it like this:                
+kubectl cluster-info
+node/k3d-cloud-command-parser-server-0 condition met
+namespace/data created
+namespace/pipeline created
+namespace/app created
+== 2/6 secrets (generated now, never stored in Git)
+secret/seaweedfs-s3-config created
+secret/s3-credentials created
+secret/s3-credentials created
+secret/s3-credentials created
+helmchartconfig.helm.cattle.io/traefik created
+Waiting for deployment "coredns" rollout to finish: 0 of 1 updated replicas are available...
+Waiting for deployment spec update to be observed...
+Waiting for deployment spec update to be observed...
+Waiting for deployment "coredns" rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for deployment "coredns" rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for deployment "coredns" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "coredns" rollout to finish: 0 of 1 updated replicas are available...
+deployment "coredns" successfully rolled out
+deployment "metrics-server" successfully rolled out
+cluster system pods hardened
+== 3/6 object storage (SeaweedFS, namespace data)
+persistentvolumeclaim/seaweedfs-data created
+deployment.apps/seaweedfs created
+service/seaweedfs created
+Waiting for deployment "seaweedfs" rollout to finish: 0 of 1 updated replicas are available...
+deployment "seaweedfs" successfully rolled out
+== 4/6 buckets and uploads (models are fetched from the GitHub Release and verified)
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/config.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/generation_config.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/model.safetensors
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/special_tokens_map.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/tokenizer.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/tokenizer_config.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v1/version_info.json
+v1: 7 files verified
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/config.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/generation_config.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/model.safetensors
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/special_tokens_map.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/tokenizer.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/tokenizer_config.json
+downloading https://github.com/ns998527-rgb/cloud-command-parser/releases/download/model-v2/version_info.json
+v2: 7 files verified
+created bucket datasets
+created bucket models
+uploaded data/commands_pool.jsonl -> s3://datasets/commands_pool.jsonl
+uploaded datasets/teacher\shard-0.jsonl -> s3://datasets/teacher/shard-0.jsonl
+uploaded datasets/teacher\shard-1.jsonl -> s3://datasets/teacher/shard-1.jsonl
+uploaded datasets/v1/train.jsonl -> s3://datasets/v1/train.jsonl
+uploaded datasets/v1/train.sha256 -> s3://datasets/v1/train.sha256
+uploaded models\v1\config.json -> s3://models/v1/config.json
+uploaded models\v1\generation_config.json -> s3://models/v1/generation_config.json
+uploaded models\v1\model.safetensors -> s3://models/v1/model.safetensors
+uploaded models\v1\model.sha256 -> s3://models/v1/model.sha256
+uploaded models\v1\special_tokens_map.json -> s3://models/v1/special_tokens_map.json
+uploaded models\v1\tokenizer.json -> s3://models/v1/tokenizer.json
+uploaded models\v1\tokenizer_config.json -> s3://models/v1/tokenizer_config.json
+uploaded models\v1\version_info.json -> s3://models/v1/version_info.json
+uploaded models\v2\config.json -> s3://models/v2/config.json
+uploaded models\v2\generation_config.json -> s3://models/v2/generation_config.json
+uploaded models\v2\model.safetensors -> s3://models/v2/model.safetensors
+uploaded models\v2\model.sha256 -> s3://models/v2/model.sha256
+uploaded models\v2\special_tokens_map.json -> s3://models/v2/special_tokens_map.json
+uploaded models\v2\tokenizer.json -> s3://models/v2/tokenizer.json
+uploaded models\v2\tokenizer_config.json -> s3://models/v2/tokenizer_config.json
+uploaded models\v2\version_info.json -> s3://models/v2/version_info.json
+== 5/6 images
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 788B 1.8s done
+#1 DONE 2.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.11.10-slim
+#2 DONE 3.9s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 151B 0.0s done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 7.96kB 0.1s done
+#4 DONE 0.1s
+
+#5 [1/7] FROM docker.io/library/python:3.11.10-slim@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e
+#5 resolve docker.io/library/python:3.11.10-slim@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e 0.1s done
+#5 DONE 0.2s
+
+#6 [2/7] WORKDIR /app
+#6 CACHED
+
+#7 [4/7] COPY service/requirements.txt /tmp/requirements.txt
+#7 CACHED
+
+#8 [6/7] COPY data/schema.json /app/schema.json
+#8 CACHED
+
+#9 [3/7] RUN pip install --index-url https://download.pytorch.org/whl/cpu torch==2.4.1+cpu
+#9 CACHED
+
+#10 [5/7] RUN pip install -r /tmp/requirements.txt
+#10 CACHED
+
+#11 [7/7] COPY service/app.py service/validation.py /app/
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers 0.0s done
+#12 exporting manifest sha256:450447b73ee4ffa27129b0a96c11d8e6e57da81fcf81acf60dbfc42e7b0a20c8 done
+#12 exporting config sha256:6a71e31e231db9419f5e7d76c914a2480cd7df9f3fec9f4f74affe360a64b60e 0.0s done
+#12 exporting attestation manifest sha256:7bacbb0fbee253c9320a4fbded7de3456c45aab71b5cd1d0c39178249a19dee0
+#12 exporting attestation manifest sha256:7bacbb0fbee253c9320a4fbded7de3456c45aab71b5cd1d0c39178249a19dee0 0.0s done
+#12 exporting manifest list sha256:69ea3c14f8f2bb47b2a08e4f80048a159ea96d94ad7af891cf94edb76e164d9c 0.0s done
+#12 naming to docker.io/library/command-parser:1.0 done
+#12 unpacking to docker.io/library/command-parser:1.0 0.0s done
+#12 DONE 0.3s
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 466B 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.11.10-slim
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 149B 0.1s
+#3 transferring context: 151B 0.2s done
+#3 DONE 0.4s
+
+#4 [internal] load build context
+#4 transferring context: 12.82kB 0.1s done
+#4 DONE 0.1s
+
+#5 [1/5] FROM docker.io/library/python:3.11.10-slim@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e
+#5 resolve docker.io/library/python:3.11.10-slim@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e
+#5 resolve docker.io/library/python:3.11.10-slim@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e 0.1s done
+#5 DONE 0.1s
+
+#6 [3/5] WORKDIR /app
+#6 CACHED
+
+#7 [4/5] COPY worker/ /app/worker/
+#7 CACHED
+
+#8 [2/5] RUN pip install boto3==1.35.70
+#8 CACHED
+
+#9 [5/5] COPY prompts/teacher_prompt.txt /app/prompts/teacher_prompt.txt
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers 0.0s done
+#10 exporting manifest sha256:6d3228d16a40d0ff782a0b794e099ad741fd4e0db40fe5863f5f88748649af37 0.0s done
+#10 exporting config sha256:3753cde26ace425c237b3a56fdc57af804d264ab917e9ef87129cd0a94f48ec5 done
+#10 exporting attestation manifest sha256:51f709ded5cf5b1b0d3c8f195993aac165cb9cbf20f94ed78b31373fd9b51613
+#10 exporting attestation manifest sha256:51f709ded5cf5b1b0d3c8f195993aac165cb9cbf20f94ed78b31373fd9b51613 0.1s done
+#10 exporting manifest list sha256:001746980c76d0bb5bc68dacd6bb381ed53d569d6b3cfd4b0d7fade55d7c140c 0.0s done
+#10 naming to docker.io/library/teacher-worker:1.0 done
+#10 unpacking to docker.io/library/teacher-worker:1.0 0.0s done
+#10 DONE 0.3s
+[36mINFO[0m[0000] Importing image(s) into cluster 'cloud-command-parser'  
+[36mINFO[0m[0001] Starting new tools node...                   
+[36mINFO[0m[0002] Starting node 'k3d-cloud-command-parser-tools'          
+[36mINFO[0m[0004] Saving 2 image(s) from runtime...            
+[36mINFO[0m[0114] Importing images into nodes...               
+[36mINFO[0m[0114] Importing images from tarball '/k3d/images/k3d-cloud-command-parser-images-20261109053355.tar' into node 'k3d-cloud-command-parser-server-0'... 
+[36mINFO[0m[0273] Removing the tarball(s) from image volume... 
+[36mINFO[0m[0274] Removing k3d-tools node...                   
+[36mINFO[0m[0276] Successfully imported image(s)               
+[36mINFO[0m[0276] Successfully imported 2 image(s) into 1 cluster(s) 
+== 6/6 application (namespace app)
+deployment.apps/parser created
+service/parser created
+ingress.networking.k8s.io/parser created
+horizontalpodautoscaler.autoscaling/parser created
+Waiting for deployment "parser" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "parser" rollout to finish: 1 of 2 updated replicas are available...
+deployment "parser" successfully rolled out
+Ready. Try: curl -s -X POST localhost:8080/parse -H 'Content-Type: application/json' -d '{"text":"what is the weather in london"}'
+
+real	18m55.470s
+user	0m0.000s
+sys	0m0.062s

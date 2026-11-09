@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+*.safetensors
+*.bin
+*.pt
+models/v1/*
+models/v2/*
+!models/v1/model.sha256
+!models/v2/model.sha256
+.env
+*.pem
+kubeconfig*
+scripts/_run_training.ps1

@@ -1,0 +1,10 @@
+[04:47:07] RECOVERY: ready replicas before: 2; deleting pod parser-5c785fb79c-fx2rr
+pod "parser-5c785fb79c-fx2rr" deleted from app namespace
+[04:47:08] ready replicas: 2 / 2
+[04:47:14] ready replicas: 1 / 2
+[04:47:22] ready replicas: 1 / 2
+[04:47:28] ready replicas: 1 / 2
+[04:47:34] ready replicas: 1 / 2
+[04:47:40] ready replicas: 1 / 2
+[04:47:46] ready replicas: 2 / 2
+[04:47:47] recovered: parser-5c785fb79c-krljr 1/1 Running 0 2m39s;parser-5c785fb79c-lcpsg 1/1 Running 0 39s;

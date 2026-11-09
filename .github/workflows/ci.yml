@@ -1,0 +1,81 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model to evaluate: v1, v2, or base (untrained pythia-70m, used to show the quality gate failing)"
+        default: v1
+
+env:
+  MODEL: ${{ github.event.inputs.model || 'v1' }}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install ruff==0.8.4
+      - run: ruff check .
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  unit-tests:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install pytest==8.3.4 httpx==0.28.1 fastapi==0.115.5 pydantic==2.10.2 boto3==1.35.70
+      - run: python -m pytest -q tests
+
+  evaluate:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Install CPU PyTorch and Transformers
+        run: |
+          pip install torch==2.4.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+          pip install transformers==4.46.3 numpy==1.26.4 safetensors==0.4.5 pyyaml==6.0.2
+      - name: Download the model from the GitHub Release (verifies SHA-256)
+        if: env.MODEL != 'base'
+        run: python scripts/fetch_models.py "$MODEL" --dest models
+      - name: Run the model on validation.jsonl
+        run: |
+          mkdir -p results
+          if [ "$MODEL" = "base" ]; then SRC=EleutherAI/pythia-70m; else SRC="models/$MODEL"; fi
+          python training/predict.py --model "$SRC" --out results/ci_predictions.jsonl
+      - name: Score
+        run: python tools/score.py results/ci_predictions.jsonl data/validation.jsonl --out results/ci_score.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-eval-${{ env.MODEL }}
+          path: results/ci_*.json*
+
+  quality-gate:
+    needs: evaluate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ci-eval-${{ env.MODEL }}
+          path: results
+      - name: Quality gate (json_validity must be at least 95)
+        run: python tools/score.py results/ci_predictions.jsonl data/validation.jsonl --min-validity 95

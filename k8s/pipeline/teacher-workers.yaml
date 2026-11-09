@@ -1,0 +1,38 @@
+# Sharded teacher workers in namespace "pipeline" (Indexed Job: SHARD_INDEX comes from the Job completion index).
+# The teacher (Ollama, phi3.5, temperature 0, seed 42) runs on the laptop, which the brief allows; pods reach it at
+# host.docker.internal:11434. Each pod writes its own object s3://datasets/teacher-incluster/shard-N.jsonl.
+# LIMIT keeps this in-cluster run a small demonstration; the full labelling ran on Kaggle (see report, Task 1).
+# Run:  kubectl apply -f k8s/pipeline/teacher-workers.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: teacher-workers
+  namespace: pipeline
+spec:
+  completions: 2
+  parallelism: 2
+  completionMode: Indexed
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: worker
+          image: teacher-worker:1.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - {name: SHARD_COUNT, value: "2"}
+            - name: SHARD_INDEX
+              valueFrom: {fieldRef: {fieldPath: "metadata.annotations['batch.kubernetes.io/job-completion-index']"}}
+            - {name: INPUT, value: "s3://datasets/commands_pool.jsonl"}
+            - {name: OUTPUT_DIR, value: "s3://datasets/teacher-incluster"}
+            - {name: LIMIT, value: "5"}       # in-cluster demonstration run
+            - {name: OLLAMA_URL, value: "http://host.docker.internal:11434"}
+            - {name: S3_ENDPOINT, value: "http://seaweedfs.data.svc.cluster.local:8333"}
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom: {secretKeyRef: {name: s3-credentials, key: access-key}}
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom: {secretKeyRef: {name: s3-credentials, key: secret-key}}
+          resources:
+            requests: {cpu: 100m, memory: 128Mi}
+            limits: {cpu: 500m, memory: 256Mi}

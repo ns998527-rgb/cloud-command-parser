@@ -1,0 +1,9 @@
+pod: parser-5c785fb79c-5qq74   (replicas: 1)
+limits: {"cpu":"1","memory":"1Gi"}
+memory before: 710111232 bytes
+requests: 50 one after another, HTTP 200: 50, mean 0.82s, median 0.56s, max 3.58s
+memory peak (cgroup memory.peak): 757985280 bytes
+memory now: 725000192 bytes
+restarts: 0, OOMKilled: 
+NAME                      CPU(cores)   MEMORY(bytes)   
+parser-5c785fb79c-5qq74   998m         667Mi           

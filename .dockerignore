@@ -1,0 +1,10 @@
+.git
+data/commands_pool.jsonl
+data/validation.jsonl
+datasets
+models
+results
+report
+tests
+kaggle
+**/__pycache__

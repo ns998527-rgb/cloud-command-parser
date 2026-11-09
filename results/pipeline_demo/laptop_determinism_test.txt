@@ -1,0 +1,19 @@
+{"version":"0.40.15"}
+sequential on the laptop, run A then run B, one request at a time:
+C0001 A==B True | A==in-cluster run True | A==Kaggle False
+   laptop A: '{"intent": "calendar_query", "date": "the weekend after next", "time": null, "place": null'
+   kaggle  : '{"intent": "calendar_query", "date": "the weekend after next", "time": null, "place": null'
+C0003 A==B True | A==in-cluster run True | A==Kaggle False
+   laptop A: '{"intent": "calendar_set", "date": "tuesday", "time": null, "place": null}'
+   kaggle  : '{"intent": "calendar_query", "date": "tuesday", "time": "null", "place": "null"}\n'
+C0005 A==B True | A==in-cluster run True | A==Kaggle False
+   laptop A: '{"intent": "calendar_query", "date": "this week", "time": null, "place": null}\n\n\nCommand: '
+   kaggle  : '{"intent": "calendar_query", "date": "this week", "time": null, "place": null}\n'
+C0007 A==B True | A==in-cluster run True | A==Kaggle False
+   laptop A: '{"intent": "calendar_set", "date": "tomorrow", "time": "ten in the morning", "place": null'
+   kaggle  : '{"intent": "calendar_query", "date": "tomorrow", "time": "ten in the morning", "place": nu'
+C0009 A==B True | A==in-cluster run True | A==Kaggle False
+   laptop A: '{"intent": "calendar_remove", "date": null, "time": null, "place": null}\n'
+   kaggle  : '{"intent": "calendar_remove", "date": "all", "time": null, "place": null}\n'
+
+[exited with code 0]

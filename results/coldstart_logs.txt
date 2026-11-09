@@ -1,0 +1,24 @@
+--- run 1 pod parser-5c785fb79c-nn2tc
+loading model v1 from s3://models/v1/
+downloaded 8 files from s3://models/v1/ to /tmp/model
+model ready in 125.46s
+--- run 1 pod parser-5c785fb79c-vc8xr
+loading model v1 from s3://models/v1/
+downloaded 8 files from s3://models/v1/ to /tmp/model
+model ready in 125.78s
+--- run 2 pod parser-5c785fb79c-4wldt
+loading model v1 from s3://models/v1/
+downloaded 8 files from s3://models/v1/ to /tmp/model
+model ready in 38.85s
+--- run 2 pod parser-5c785fb79c-gl9bf
+loading model v1 from s3://models/v1/
+downloaded 8 files from s3://models/v1/ to /tmp/model
+model ready in 39.38s
+--- run 3 pod parser-5c785fb79c-cbwcv
+loading model v1 from s3://models/v1/
+downloaded 8 files from s3://models/v1/ to /tmp/model
+model ready in 35.9s
+--- run 3 pod parser-5c785fb79c-szsc6
+loading model v1 from s3://models/v1/
+downloaded 8 files from s3://models/v1/ to /tmp/model
+model ready in 35.21s

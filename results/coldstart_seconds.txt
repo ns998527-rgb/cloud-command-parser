@@ -1,0 +1,6 @@
+run=1 pod=parser-5c785fb79c-nn2tc seconds=140
+run=1 pod=parser-5c785fb79c-vc8xr seconds=139
+run=2 pod=parser-5c785fb79c-4wldt seconds=53
+run=2 pod=parser-5c785fb79c-gl9bf seconds=53
+run=3 pod=parser-5c785fb79c-cbwcv seconds=54
+run=3 pod=parser-5c785fb79c-szsc6 seconds=54

@@ -1,0 +1,15 @@
+# k3d cluster for the project: one server node (single-node, see report limitations), Traefik ingress on localhost:8080.
+# Create:  k3d cluster create --config cluster/k3d.yaml
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: cloud-command-parser
+servers: 1
+agents: 0
+ports:
+  - port: 8080:80          # host localhost:8080 -> Traefik (Ingress) port 80, the Locust --host
+    nodeFilters:
+      - loadbalancer
+options:
+  k3s:
+    extraArgs: []          # k3s ships Traefik and metrics-server by default, both are used

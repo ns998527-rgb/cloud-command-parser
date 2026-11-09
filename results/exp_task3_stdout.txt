@@ -1,0 +1,30 @@
+pod: parser-5c785fb79c-v89ts
+limits: {"cpu":"1","memory":"1Gi"}
+cat: 'C:/Program Files/Git/sys/fs/cgroup/memory.current': No such file or directory
+command terminated with exit code 1
+memory before:  bytes
+memory peak (cgroup memory.peak):  bytes
+cat: 'C:/Program Files/Git/sys/fs/cgroup/memory.current': No such file or directory
+command terminated with exit code 1
+memory now:  bytes
+restarts: 0, last state: {}
+NAME                      CPU(cores)   MEMORY(bytes)   
+parser-5c785fb79c-v89ts   32m          535Mi           
+--- FAULT_INJECT=1
+Waiting for deployment "parser" rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for deployment "parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "parser" rollout to finish: 1 old replicas are pending termination...
+deployment "parser" successfully rolled out
+HTTP/1.1 502 Bad Gateway
+HTTP/1.1 502 Bad Gateway
+HTTP/1.1 500 Internal Server Error
+X-Model-Version: v1
+{"error":"invalid_model_output"}
+Waiting for deployment spec update to be observed...
+Waiting for deployment "parser" rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for deployment "parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "parser" rollout to finish: 1 old replicas are pending termination...
+deployment "parser" successfully rolled out
+--- FAULT_INJECT removed; normal request:
+HTTP/1.1 502 Bad Gateway

@@ -1,0 +1,11 @@
+bash scripts/down.sh
+[36mINFO[0m[0001] Deleting cluster 'cloud-command-parser'                 
+[36mINFO[0m[0008] Deleting cluster network 'k3d-cloud-command-parser'     
+[36mINFO[0m[0008] Deleting 1 attached volumes...               
+[36mINFO[0m[0008] Removing cluster details from default kubeconfig... 
+[36mINFO[0m[0008] Removing standalone kubeconfig file (if there is one)... 
+[36mINFO[0m[0008] Successfully deleted cluster cloud-command-parser!      
+
+real	0m9.853s
+user	0m0.000s
+sys	0m0.047s
