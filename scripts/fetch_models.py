@@ -23,6 +23,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("versions", nargs="+")
     ap.add_argument("--repo", default=os.environ.get("MODEL_REPO", "ns998527-rgb/cloud-command-parser"))
+    ap.add_argument("--fallback-repo", default=os.environ.get("FALLBACK_MODEL_REPO", "Abhijit26918/cloud-sms"))
     ap.add_argument("--dest", default="models")
     a = ap.parse_args()
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -34,16 +35,32 @@ def main():
             path = os.path.join(d, name)
             if os.path.exists(path) and sha256(path) == digest:
                 continue
-            url = f"https://github.com/{a.repo}/releases/download/model-{v}/{name}"
-            print("downloading", url, flush=True)
-            try:
-                req = urllib.request.Request(url, headers=headers)
-                with urllib.request.urlopen(req) as resp, open(path, "wb") as out_file:
-                    out_file.write(resp.read())
-            except (urllib.error.HTTPError, urllib.error.URLError) as err:
+            
+            repos = [a.repo]
+            if a.fallback_repo and a.fallback_repo != a.repo:
+                repos.append(a.fallback_repo)
+                
+            downloaded = False
+            for repo in repos:
+                url = f"https://github.com/{repo}/releases/download/model-{v}/{name}"
+                try:
+                    print(f"downloading {name} from {repo}...", flush=True)
+                    req = urllib.request.Request(url, headers=headers)
+                    with urllib.request.urlopen(req, timeout=30) as resp, open(path, "wb") as out_file:
+                        out_file.write(resp.read())
+                    downloaded = True
+                    break
+                except (urllib.error.HTTPError, urllib.error.URLError) as err:
+                    if repo == a.repo and len(repos) > 1:
+                        print(f"Notice: asset not found in {repo}, trying mirror...", flush=True)
+                        continue
+                    else:
+                        print(f"Failed from {repo}: {err}", flush=True)
+
+            if not downloaded or not os.path.exists(path):
                 raise SystemExit(
-                    f"failed to download {name} for model {v} from {url} ({err}). "
-                    f"Ensure release tag 'model-{v}' is published on {a.repo}."
+                    f"failed to download {name} for model {v}. "
+                    f"Ensure release tag 'model-{v}' is published."
                 )
 
             if sha256(path) != digest:
